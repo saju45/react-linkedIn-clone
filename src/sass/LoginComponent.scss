@@ -1,0 +1,133 @@
+
+$linkedInBlue1:#0072b1;
+$linkedInBlue2:#0073b1;
+$linkedInBlue3:#004c75;
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.login-wrapper{
+
+    .login-wrapper-inner{
+        margin-left: 200px;
+    }
+    background-color: white !important;
+    height: 100vh;
+    .heading{
+        font-family: system-ui;
+        font-weight: 400;
+        color: rgba(0, 0,0 ,0.9);
+    }
+
+    .sub-heading{
+        margin-top: -20px;
+        font-family: system-ui;
+
+
+    }
+}
+
+
+.auth-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+
+    .common-input{
+        height: 30px;
+        padding: 10px;
+        background-color: white;
+        outline: none;
+        border: 1px solid #212121;
+        border-radius: 3px;
+        color: #212121;
+        font-family: system-ui;
+        font-size: 16px;
+        margin: 10px 0px;
+    }
+    .common-input:focus{
+        outline: 1px solid $linkedInBlue1 ;
+    }
+    ::placeholder{
+        font-family: system-ui;
+        font-size: 16px;
+    }
+}
+
+.login-btn{
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+    background-color: $linkedInBlue2;
+    color: #ffffff;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    font-family: system-ui;
+    font-weight: 600;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.login-btn:hover{
+    background-color: $linkedInBlue3;
+}
+
+.linkedInLogo{
+    width: 80px;
+ 
+}
+
+.hr-text {
+    line-height: 1em;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: black;
+    text-align: center;
+    height: 1.5em;
+    opacity: .5;
+    &:before {
+      content: '';
+      // use the linear-gradient for the fading effect
+      // use a solid background color for a solid bar
+      background: linear-gradient(to right, transparent, #818078, transparent);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 1px;
+    }
+    &:after {
+      content: attr(data-content);
+      position: relative;
+      display: inline-block;
+      color: black;
+  
+      padding: 0 .5em;
+      line-height: 1.5em;
+      // this is really the only tricky part, you need to specify the background color of the container element...
+      color: #818078;
+      background-color: #fcfcfa9c;
+    }
+  }
+
+  .google-btn-container{
+    margin-left: 200px;
+    .button{
+        width: 300px !important;
+    }
+    .goto-signup{
+        margin-left: 50px;
+        font-size: 18px;
+    }
+    .join-now{
+        color: $linkedInBlue1;
+        font-family: system-ui;
+        cursor: pointer;
+        font-size: 18px;
+    }
+  }
