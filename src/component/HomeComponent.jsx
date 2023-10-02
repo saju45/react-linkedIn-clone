@@ -1,7 +1,10 @@
+import PostStatus from "./common/PostUpdate"
 
 const HomeComponent = () => {
   return (
-    <div>HomeComponent</div>
+    <div>
+      <PostStatus/>
+    </div>
   )
 }
 
