@@ -8,7 +8,10 @@ body {
   height: 100vh;
 }
 .login-wrapper .login-wrapper-inner {
-  margin-left: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .login-wrapper .heading {
   font-family: system-ui;
@@ -104,7 +107,10 @@ body {
 }
 
 .google-btn-container {
-  margin-left: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .google-btn-container .button {
   width: 300px !important;

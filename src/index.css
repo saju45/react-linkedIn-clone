@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("/src/component/common/common.scss");
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #212121;
+  background-color: rgb(224, 224, 224);
+}
+
+body {
+  /* margin: 0;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh; */
+}
+
+.common-input {
+  height: 20px;
+  padding: 10px;
+  background-color: white;
+  outline: none;
+  border: 1px solid #212121;
+  border-radius: 3px;
+  color: #212121;
+  font-family: system-ui;
+  font-size: 16px;
+  margin: 5px 0px;
+}
+
+.common-input:focus {
+  outline: 1px solid #0072b1;
+}
+
+::-moz-placeholder {
+  font-family: system-ui;
+  font-size: 16px;
+}
+
+::placeholder {
+  font-family: system-ui;
+  font-size: 16px;
+}
+
+.common-textarea {
+  padding: 10px;
+  background-color: white;
+  outline: none;
+  border: 1px solid #212121;
+  border-radius: 3px;
+  color: #212121;
+  font-family: system-ui;
+  font-size: 16px;
+  margin: 5px 0px;
+}/*# sourceMappingURL=index.css.map */

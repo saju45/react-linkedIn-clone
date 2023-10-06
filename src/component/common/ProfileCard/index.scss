@@ -1,0 +1,84 @@
+.profile-card{
+    width: auto;
+    height: auto;
+    background-color: whitesmoke;
+    margin: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+
+
+    .profile-info{
+        display: flex;
+        justify-content: space-between;
+
+
+        .right-info{
+            margin-top: 25px;
+            margin-right: 20px;
+            .collage,
+            .company{
+                font-family: system-ui;
+                color: rgba(0, 0, 0, 0.9);
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 30px;
+            }
+
+            .company{
+                margin-top: -15px;
+            }
+
+           
+
+           
+        
+        }
+    }
+
+    .website{
+        color: #004c75 !important;
+    }
+
+    .skill-label{
+        font-weight: 600;
+    }
+    .edit-btn{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+
+       .edit-icons{
+        cursor: pointer;
+        padding:10px;
+       }
+
+       .edit-icons:hover{
+        background-color: rgb(197, 197, 197);
+        padding: 10px;
+        border-radius: 50%;
+       }
+    }
+
+    .username{
+        font-family: system-ui;
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 10px;
+    }
+
+  
+    .headline{
+        font-family: system-ui;
+        font-size: 16px;
+        margin-top: -20px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.9);
+        width: 320px;
+        line-height: 20px;
+
+    }
+
+ 
+}

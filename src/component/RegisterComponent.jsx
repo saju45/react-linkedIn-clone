@@ -6,6 +6,7 @@ import linkdedIn_logo from '../assets/logo.jpg'
 import '../sass/LoginComponent.scss'
 import GoogleButton from 'react-google-button'
 import { useNavigate } from 'react-router-dom'
+import { addUserData } from '../Api/FireStoreApi'
 
 const RegisterComponent = () => {
 
@@ -14,8 +15,17 @@ const RegisterComponent = () => {
 
     const [creadential,setCredential]=useState({})
   
-    const register=()=>{
-        RegisterApi(creadential.email,creadential.password)
+    const register=async()=>{
+
+      const object={
+        name : creadential.name,
+        email:creadential.email,
+        password:creadential.password
+      }
+
+       const res=await RegisterApi(creadential.email,creadential.password)
+        await addUserData(object)
+       localStorage.setItem('userEmail',res.user.email);
         navigate('/home')
     }
 
@@ -34,6 +44,10 @@ const RegisterComponent = () => {
       <h1 className='heading'>Make the most of your professional life</h1>
         
         <div className='auth-inputs'>
+
+          <input type="text" className='common-input' placeholder='Your Name '
+         onChange={(event)=> setCredential({...creadential,name:event.target.value})} />
+
         <input type="email" className='common-input' placeholder='Email or Phone'
          onChange={(event)=> setCredential({...creadential,email:event.target.value})} />
          

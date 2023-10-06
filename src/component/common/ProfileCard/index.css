@@ -1,0 +1,58 @@
+.profile-card {
+  width: auto;
+  height: auto;
+  background-color: whitesmoke;
+  margin: 30px;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+}
+.profile-card .profile-info {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-card .profile-info .right-info {
+  margin-top: 25px;
+  margin-right: 20px;
+}
+.profile-card .profile-info .right-info .collage,
+.profile-card .profile-info .right-info .company {
+  font-family: system-ui;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 30px;
+}
+.profile-card .profile-info .right-info .company {
+  margin-top: -15px;
+}
+.profile-card .edit-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.profile-card .edit-btn .edit-icons {
+  cursor: pointer;
+  padding: 10px;
+}
+.profile-card .edit-btn .edit-icons:hover {
+  background-color: rgb(197, 197, 197);
+  padding: 10px;
+  border-radius: 50%;
+}
+.profile-card .username {
+  font-family: system-ui;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.profile-card .headline {
+  font-family: system-ui;
+  font-size: 16px;
+  margin-top: -20px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  width: 320px;
+  line-height: 20px;
+}/*# sourceMappingURL=index.css.map */

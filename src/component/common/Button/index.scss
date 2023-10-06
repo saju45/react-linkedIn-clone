@@ -1,0 +1,24 @@
+$linkedInBlue1:#0072b1;
+$linkedInBlue2:#0073b1;
+$linkedInBlue3:#004c75;
+
+
+.common-btn{
+   width: 200px; 
+   height: 30px;
+   cursor: pointer;
+   background-color: whitesmoke;
+   border: 1px solid $linkedInBlue1;
+   color: $linkedInBlue1;
+   border-radius: 30px;
+   font-family: system-ui;
+   font-size: 14px;
+   font-weight: 600;
+   margin: 7px 0;
+}
+
+.common-btn:hover{
+   background-color: rgb(230, 230, 230);
+   border: 1px solid $linkedInBlue1;
+   color: $linkedInBlue1;
+}

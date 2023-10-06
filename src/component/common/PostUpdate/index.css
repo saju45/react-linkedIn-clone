@@ -1,0 +1,35 @@
+.post-status-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.post-status-main .post-status {
+  width: 550px;
+  height: 100px;
+  background-color: whitesmoke;
+  margin-top: 30px;
+  border: 1px solid #b7b7b7;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-status-main .post-status .open-post-modal {
+  width: 80%;
+  height: 50px;
+  text-align: start;
+  color: rgba(0, 0, 0, 0.89);
+  background-color: whitesmoke;
+  outline: none;
+  border: 1px solid #b7b7b7;
+  border-radius: 30px;
+  padding-left: 20px;
+  cursor: pointer;
+  font-family: system-ui;
+  font-weight: 600;
+  font-size: 14px;
+}
+.post-status-main .post-status .open-post-modal:hover {
+  background-color: #dcdbdb;
+}/*# sourceMappingURL=index.css.map */

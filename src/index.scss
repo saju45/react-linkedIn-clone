@@ -1,6 +1,10 @@
  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
  @import url('/src/component/common/common.scss');
-:root {
+ $linkedInBlue1:#0072b1;
+ $linkedInBlue2:#0073b1;
+ $linkedInBlue3:#004c75;
+
+ :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -25,3 +29,43 @@ body {
   min-height: 100vh; */
 }
 
+
+.common-input{
+  height: 20px;
+  padding: 10px;
+  background-color: white;
+  outline: none;
+  border: 1px solid #212121;
+  border-radius: 3px;
+  color: #212121;
+  font-family: system-ui;
+  font-size: 16px;
+  margin: 5px 0px;
+}
+.common-input:focus{
+  outline: 1px solid $linkedInBlue1;
+}
+::placeholder{
+  font-family: system-ui;
+  font-size: 16px;
+}
+
+.common-textarea{
+  padding: 10px;
+  background-color: white;
+  outline: none;
+  border: 1px solid #212121;
+  border-radius: 3px;
+  color: #212121;
+  font-family: system-ui;
+  font-size: 16px;
+  margin: 5px 0px;
+}
+
+.common-textarea:focus{
+  outline: 1px solid $linkedInBlue1;
+}
+::placeholder{
+  font-family: system-ui;
+  font-size: 16px;
+}

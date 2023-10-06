@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react"
-import HomeComponent from "../component/HomeComponent"
+import ProfileComponent from "../component/ProfileComponent"
 
 import {onAuthStateChanged} from 'firebase/auth'
 import { auth } from "../firebase"
 import { useNavigate } from "react-router-dom"
 import Loader from "../component/common/Loader"
 
-const Home = ({currentUser}) => {
+const Profile = ({currentUser}) => {
 
     const [loading,setLoading]=useState(true)
     const navigate=useNavigate()
@@ -22,7 +22,7 @@ const Home = ({currentUser}) => {
         })
     },[])
 
-  return loading ? <Loader/>:<HomeComponent currentUser={currentUser}/>
+  return loading ? <Loader/>:<ProfileComponent currentUser={currentUser}/>
 }
 
-export default Home
+export default Profile

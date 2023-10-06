@@ -4,7 +4,19 @@
     background-color:rgba(255, 255, 255, 0.87);
     display: flex;
     align-items: center;
+    position: relative;
+
+    .popup-position {
+        position: absolute;
+        right: 10px;
+        top: 65px;
+        z-index: 99;
+      }
+
 }
+
+
+
 .linkedin-logo{
     width: 65px;
     margin-left: 20px;

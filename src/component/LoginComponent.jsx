@@ -13,8 +13,10 @@ const LoginComponent = () => {
   const navigate=useNavigate()
 
     const [creadential,setCredential]=useState({})
-    const login=()=>{
-        LoginApi(creadential.email,creadential.password)
+    const login=async()=>{
+       const res= await LoginApi(creadential.email,creadential.password)
+
+       localStorage.setItem('userEmail',res.user.email);
         navigate('/home')
     }
 

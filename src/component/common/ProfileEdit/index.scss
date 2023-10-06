@@ -1,0 +1,63 @@
+
+$linkedInBlue1:#0072b1;
+$linkedInBlue2:#0073b1;
+$linkedInBlue3:#004c75;
+
+.profile-card{
+    width: auto;
+    height: auto;
+    background-color: whitesmoke;
+    margin: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+
+    .edit-btn{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+
+        .close-icon{
+            cursor: pointer;
+        }
+    }
+
+
+    .profile-edit-inputs{
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+
+        label{
+            
+        }
+    }
+
+
+    .save-btn-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .save-btn{
+        width: 300px;
+        height: 50px;
+        cursor: pointer;
+        background-color: $linkedInBlue2;
+        color: #ffffff;
+        border-radius: 30px;
+        outline: none;
+        border: none;
+        font-family: system-ui;
+        font-weight: 600;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .save-btn:hover{
+        background-color: $linkedInBlue3;
+    }
+
+ 
+}

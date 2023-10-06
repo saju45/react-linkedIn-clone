@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import PostStatus from "./common/PostUpdate"
 
-const HomeComponent = () => {
+const HomeComponent = ({currentUser}) => {
   return (
-    <div>
-      <PostStatus/>
+    <div className="home-component">
+      <PostStatus currentUser={currentUser}/>
     </div>
   )
 }

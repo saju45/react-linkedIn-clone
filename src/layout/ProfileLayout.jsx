@@ -3,8 +3,9 @@ import Home from  '../pages/Home'
 import Topbar from '../component/common/Topbar'
 import { useMemo, useState } from 'react'
 import { getCurrentUser } from '../Api/FireStoreApi'
+import Profile from '../pages/Profile'
 
-const HomeLayout = () => {
+const ProfileLayout = () => {
   
   const [currentUser,setCurrentUser]=useState({})
 
@@ -17,9 +18,9 @@ const HomeLayout = () => {
   return (
     <div>
         <Topbar/>
-        <Home currentUser={currentUser}/>
+        <Profile currentUser={currentUser}/>
     </div>
   )
 }
 
-export default HomeLayout
+export default ProfileLayout
