@@ -26,6 +26,12 @@
 .profile-card .profile-info .right-info .company {
   margin-top: -15px;
 }
+.profile-card .website {
+  color: #004c75 !important;
+}
+.profile-card .skill-label {
+  font-weight: 600;
+}
 .profile-card .edit-btn {
   position: absolute;
   right: 20px;

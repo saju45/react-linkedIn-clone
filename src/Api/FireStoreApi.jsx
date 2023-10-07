@@ -1,9 +1,10 @@
-import {addDoc,collection, onSnapshot,doc,updateDoc, query, where} from 'firebase/firestore'
+import {addDoc,collection, onSnapshot,doc,updateDoc, query, where,setDoc, deleteDoc} from 'firebase/firestore'
 import { firestore } from '../firebase'
 import { toast } from 'react-toastify'
 
 const collectionRef=collection(firestore,'posts')
 const userRef =collection(firestore,"users")
+const likeRef=collection(firestore,"likes");
 
 export const AddPost=(object)=>{
 
@@ -78,4 +79,39 @@ export const editProfile=(userId,payload)=>{
         toast.error("something wrong check again")
     })
 
+}
+
+export const likePost=async(userId,postId,liked)=>{
+    
+    try {
+        let docToLike=doc(likeRef,`${userId}}_${postId}` )
+        if(liked){
+            deleteDoc(docToLike)
+        }else{
+            await setDoc(docToLike,{userId,postId})
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+
+export const getLikes=(userId,postId,setLikedCount,setLiked)=>{
+
+    try {
+        let likeQuary=query(likeRef,where('postId','==',postId));
+        onSnapshot(likeQuary,(response)=>{
+            let likes=response.docs.map((doc)=>{
+                return doc.data()
+            })
+            let likeCount=likes.length;
+            setLikedCount(likeCount)
+            const isLiked=likes.some((like)=> like.userId===userId)
+            setLiked(isLiked)
+            console.log(isLiked);
+        })
+    } catch (error) {
+        console.error(error);
+    }
 }

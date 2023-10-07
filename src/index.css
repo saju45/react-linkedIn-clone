@@ -54,4 +54,18 @@ body {
   font-family: system-ui;
   font-size: 16px;
   margin: 5px 0px;
+}
+
+.common-textarea:focus {
+  outline: 1px solid #0072b1;
+}
+
+::-moz-placeholder {
+  font-family: system-ui;
+  font-size: 16px;
+}
+
+::placeholder {
+  font-family: system-ui;
+  font-size: 16px;
 }/*# sourceMappingURL=index.css.map */

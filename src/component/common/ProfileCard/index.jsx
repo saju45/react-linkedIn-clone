@@ -40,7 +40,7 @@ const ProfileCard = ({currentUser,onEdit}) => {
         <div>
         <h3 className='username'>
           {Object.values(currentProfile).length==0
-          ?currentUser.name
+          ? currentUser.name
           :currentProfile.name
           }
           </h3>
@@ -54,14 +54,14 @@ const ProfileCard = ({currentUser,onEdit}) => {
       <p className='location'>
       {Object.values(currentProfile).length==0
           ?`${currentUser.city} , ${currentUser.country} `
-          :`${currentProfile.city} , ${currentProfile.country} `
+          :currentProfile.city && `${currentProfile.city} , ${currentProfile.country} `
           } </p>
 
           <a className='website' href={Object.values(currentProfile).length==0
           ?currentUser.website
           :currentProfile.website
           } target='blank'>
-             href={Object.values(currentProfile).length==0
+            {Object.values(currentProfile).length==0
           ?currentUser.website
           :currentProfile.website
           }
@@ -76,7 +76,7 @@ const ProfileCard = ({currentUser,onEdit}) => {
      
 
      <p className='skills'>
-      <span className='skill-label'>Skills :</span> &nbsp;
+      {currentProfile.skills && <span className='skill-label'>Skills :</span>} &nbsp;
       {Object.values(currentProfile).length==0
           ?currentUser.skills
           :currentProfile.skills
