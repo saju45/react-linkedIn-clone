@@ -1,17 +1,18 @@
 /* eslint-disable react/prop-types */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PostsCard from '../PostCard';
 import './index.scss'
-import { getSigleStatus, getSignleUser } from '../../../Api/FireStoreApi';
+import { editProfile, getSigleStatus, getSignleUser, uploadProfile } from '../../../Api/FireStoreApi';
 import { useLocation } from 'react-router-dom';
 import { HiOutlinePencil } from "react-icons/hi";
+import { uploadImageApi } from '../../../Api/ImageUpload';
 
 const ProfileCard = ({currentUser,onEdit}) => {
   let location=useLocation()
   const [allStatus,setAllStatus]=useState([])
   const [currentProfile,setCurrentProfile]=useState({})
-
+  const [currentImage,setCurrentImage]=useState({})
 
   useMemo(()=>{
 
@@ -26,18 +27,34 @@ const ProfileCard = ({currentUser,onEdit}) => {
     }
 
   },[])
-  console.log('current Profile : ',currentProfile.name);
+
+
+  console.log(currentUser);
+  const getImage=(event)=>{
+
+    setCurrentImage(event.target.files[0]);
+  }
+
+  const uploadImage=()=>{
+    uploadImageApi(currentImage,currentUser.userId)
+
+  }
+
+
+  
 
   return (
     <>
       <div className='profile-card'>
-
+      <input type="file" onChange={getImage} />
+      <button onClick={uploadImage}>upload</button>
       <div className='edit-btn'>
         <HiOutlinePencil className='edit-icons' onClick={onEdit}/>
       </div>
 
       <div className='profile-info'>
         <div>
+          <img className='profile-image' src={currentUser.imageLink} />
         <h3 className='username'>
           {Object.values(currentProfile).length==0
           ? currentUser.name

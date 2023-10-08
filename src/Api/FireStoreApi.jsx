@@ -2,6 +2,7 @@ import {addDoc,collection, onSnapshot,doc,updateDoc, query, where,setDoc, delete
 import { firestore } from '../firebase'
 import { toast } from 'react-toastify'
 
+
 const collectionRef=collection(firestore,'posts')
 const userRef =collection(firestore,"users")
 const likeRef=collection(firestore,"likes");
@@ -139,4 +140,8 @@ export const getComments=(postId,setComments)=>{
     } catch (error) {
         console.error(error);
     }
+}
+
+export const uploadProfile=()=>{
+
 }
