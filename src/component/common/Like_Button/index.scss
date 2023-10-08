@@ -8,6 +8,10 @@
     cursor: pointer;
     margin-bottom: -20px;
 
+    .like-comment{
+       display: grid;
+       grid-template-columns: auto auto auto auto;
+    }
 
     .hr-line{
         margin-top: -15px;
@@ -22,7 +26,7 @@
         font-size: 12px;
         margin-left: 5px;
     }
-    .likes-inner{
+    .likes-comment-inner{
         display: flex;
         align-items: center;
         margin-top: -20px;
@@ -44,4 +48,59 @@
 
         }
     }
+
+    .comment-input{
+        height: 40px;
+        background-color: whitesmoke;
+        padding-left: 7px;
+        border-radius: 30px;
+        border: 1px solid #4b4b4b;
+    }
+    
+
+    .comment-input:focus{
+        outline: 1px solid #4b4b4b;
+        color: #4b4b4b;
+    }
+
+    .add-comment{
+        width: 150px;
+        height: 35px;
+        background-color: #0a66c2;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        border-radius: 30px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        color: white;
+    }
+
+    .all-comments{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        background-color: rgb(227, 227, 227);
+        border-radius: 10px;
+        position: relative;
+        margin: 7px 0;
+
+        .name{
+            color: #212121;
+            text-decoration: none;
+           
+        }
+
+        .comment{
+
+            margin-left: 10px;
+            margin-top: 0px;
+        }
+        .timestamp{
+            position: absolute;
+            top:0px;
+            right: 10px;
+        }
+    }
+
 }

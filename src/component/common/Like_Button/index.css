@@ -1,11 +1,11 @@
-.like-container {
+.likes-comment-container {
   display: flex;
   align-items: center;
   gap: 5px;
   padding: 7px 10px;
   cursor: pointer;
 }
-.like-container p {
+.likes-comment-container p {
   font-family: system-ui;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.835);

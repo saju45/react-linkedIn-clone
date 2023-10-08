@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 const collectionRef=collection(firestore,'posts')
 const userRef =collection(firestore,"users")
 const likeRef=collection(firestore,"likes");
+const commentRef=collection(firestore,'comments')
 
 export const AddPost=(object)=>{
 
@@ -110,6 +111,30 @@ export const getLikes=(userId,postId,setLikedCount,setLiked)=>{
             const isLiked=likes.some((like)=> like.userId===userId)
             setLiked(isLiked)
             console.log(isLiked);
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const postComment=async(postId,comment,timeStamp,name)=>{
+
+    try {
+        await addDoc(commentRef,{postId,comment,timeStamp,name})
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getComments=(postId,setComments)=>{
+
+    try {
+        let singelPostCommentQuary=query(commentRef,where('postId','==',postId))
+        onSnapshot(singelPostCommentQuary, (response)=>{
+        
+            setComments(response.docs.map((doc)=>{
+                return {...doc.data(),id:doc.id}
+            }))
         })
     } catch (error) {
         console.error(error);
