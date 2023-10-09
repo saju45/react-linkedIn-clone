@@ -3,7 +3,9 @@
 
 import { useMemo, useState } from 'react';
 import './index.scss'
-import { AiOutlineHeart,AiFillHeart ,AiOutlineComment} from 'react-icons/ai';
+import { AiOutlineComment} from 'react-icons/ai';
+import {BsHandThumbsUp,BsFillHandThumbsUpFill} from 'react-icons/bs';
+
 import { getComments, getCurrentUser, getLikes, likePost, postComment } from '../../../Api/FireStoreApi';
 import { getCurrentTimeStamp } from '../../../helpers/useMoment';
 
@@ -36,7 +38,7 @@ const LikeButton = ({postId}) => {
         getLikes(currentUser.userId,postId,setLikedCount,setLiked)
     },[currentUser.userId,postId])
 
-    console.log(comments);
+    // console.log(comments);
   return (
     <div className='like-container' >
      <p>{likesCount}  people like this post</p>
@@ -49,7 +51,7 @@ const LikeButton = ({postId}) => {
      <div className='like-comment'>
 
      <div className='likes-comment-inner'>
-     {liked?<AiFillHeart onClick={()=>handleLike(postId,currentUser.userId)} size={30} color='#0a66c4'/>:<AiOutlineHeart size={30} onClick={()=>handleLike(postId,currentUser.userId)}/>}
+     {liked?<BsFillHandThumbsUpFill onClick={()=>handleLike(postId,currentUser.userId)} size={30} color='#0a66c4'/>:<BsHandThumbsUp size={30} onClick={()=>handleLike(postId,currentUser.userId)}/>}
       <p className={liked?"blue":'black'}>{liked ? "Liked":'Like'}</p>
      </div>
 

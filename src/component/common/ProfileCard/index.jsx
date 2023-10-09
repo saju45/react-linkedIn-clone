@@ -1,18 +1,21 @@
 /* eslint-disable react/prop-types */
 
-import { useEffect, useMemo, useState } from 'react';
+import {  useMemo, useState } from 'react';
 import PostsCard from '../PostCard';
 import './index.scss'
-import { editProfile, getSigleStatus, getSignleUser, uploadProfile } from '../../../Api/FireStoreApi';
+import {  getSigleStatus, getSignleUser } from '../../../Api/FireStoreApi';
 import { useLocation } from 'react-router-dom';
 import { HiOutlinePencil } from "react-icons/hi";
 import { uploadImageApi } from '../../../Api/ImageUpload';
+import FileUploadModal from '../FileUploadModal';
 
 const ProfileCard = ({currentUser,onEdit}) => {
   let location=useLocation()
   const [allStatus,setAllStatus]=useState([])
   const [currentProfile,setCurrentProfile]=useState({})
   const [currentImage,setCurrentImage]=useState({})
+  const [modalOpen, setModalOpen] = useState(false);
+  const [progress,setProgress]=useState(0)
 
   useMemo(()=>{
 
@@ -29,14 +32,15 @@ const ProfileCard = ({currentUser,onEdit}) => {
   },[])
 
 
-  console.log(currentUser);
+  // console.log(currentUser);
   const getImage=(event)=>{
 
     setCurrentImage(event.target.files[0]);
   }
 
   const uploadImage=()=>{
-    uploadImageApi(currentImage,currentUser.userId)
+    uploadImageApi(currentImage,currentUser.userId,setProgress,setModalOpen,setCurrentImage)
+
 
   }
 
@@ -45,16 +49,24 @@ const ProfileCard = ({currentUser,onEdit}) => {
 
   return (
     <>
+    <FileUploadModal 
+    modalOpen={modalOpen}
+     setModalOpen={setModalOpen}
+     uploadImage={uploadImage} 
+     getImage={getImage}
+    currentImage={currentImage}
+    progress={progress}
+    />
+     
       <div className='profile-card'>
-      <input type="file" onChange={getImage} />
-      <button onClick={uploadImage}>upload</button>
+     
       <div className='edit-btn'>
         <HiOutlinePencil className='edit-icons' onClick={onEdit}/>
       </div>
 
       <div className='profile-info'>
         <div>
-          <img className='profile-image' src={currentUser.imageLink} />
+          <img className='profile-image' src={currentUser.imageLink} onClick={()=>setModalOpen(true)} />
         <h3 className='username'>
           {Object.values(currentProfile).length==0
           ? currentUser.name

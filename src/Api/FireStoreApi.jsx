@@ -29,6 +29,16 @@ export const AddPost=(object)=>{
     })
 }
 
+export const getAllUsers=(setAllUsers)=>{
+    
+    onSnapshot(userRef, (response)=>{
+        setAllUsers(response.docs.map((docs)=>{
+            return {...docs.data(),id:docs.id}
+        }));
+    })
+}
+
+
 export const getSigleStatus=(setAllStatus,userId)=>{
     const singlePostquaery=query(collectionRef,where('userId','==',userId ))
     
@@ -98,7 +108,6 @@ export const likePost=async(userId,postId,liked)=>{
 
 }
 
-
 export const getLikes=(userId,postId,setLikedCount,setLiked)=>{
 
     try {
@@ -111,7 +120,7 @@ export const getLikes=(userId,postId,setLikedCount,setLiked)=>{
             setLikedCount(likeCount)
             const isLiked=likes.some((like)=> like.userId===userId)
             setLiked(isLiked)
-            console.log(isLiked);
+            // console.log(isLiked);
         })
     } catch (error) {
         console.error(error);
@@ -142,6 +151,3 @@ export const getComments=(postId,setComments)=>{
     }
 }
 
-export const uploadProfile=()=>{
-
-}

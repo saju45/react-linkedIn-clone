@@ -35,10 +35,7 @@ const PostStatus = ({currentUser}) => {
     getStatus(setAllStatus)
   },[])
 
-  console.log(allStatus);
 
-
- 
   return (
     <div className='post-status-main'>
 

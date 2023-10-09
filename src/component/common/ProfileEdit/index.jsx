@@ -18,13 +18,11 @@ const ProfileEdit = ({onEdit,currentUser}) => {
 
     }
 
-
-    console.log(currentUser);
-
     const updateProfileData=()=>{
         editProfile(currentUser?.userId,editInputs);
         onEdit()
-    }
+    } 
+
 
   return (
     <div className='profile-card'>
