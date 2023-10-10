@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import './index.scss'
 import LikeButton from '../Like_Button'
 import { useMemo, useState } from 'react'
-import { getAllUsers, getCurrentUser } from '../../../Api/FireStoreApi'
+import { deletePost, getAllUsers, getCurrentUser } from '../../../Api/FireStoreApi'
+import {BsPencil,BsTrash} from 'react-icons/bs';
 
-const PostsCard = ({posts}) => {
+const PostsCard = ({posts,getEditData}) => {
 
   const navigate=useNavigate()
 
@@ -21,11 +22,19 @@ const PostsCard = ({posts}) => {
 
 
   
-  console.log();
+  // console.log(currentUser.userIds);
+  console.log(posts.userId);
 
   return (
     <div className='posts-card'>
       <div className='post-image-wrapper'>
+        {currentUser.userId===posts.userId?
+          <div className='action-container'>
+          <BsPencil size={20} className='action-icon' onClick={()=>getEditData(posts)}/>
+          <BsTrash size={20} className='action-icon' onClick={()=> deletePost(posts.id)}/>
+        </div>:<></>
+      }
+      
       <img className='post-image' alt='profile image' src={allUsers.filter((item)=> item.id===posts.userId)
        .map((item)=> item.imageLink)[0]} />
      

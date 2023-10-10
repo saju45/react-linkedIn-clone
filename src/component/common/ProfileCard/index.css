@@ -11,6 +11,16 @@
   display: flex;
   justify-content: space-between;
 }
+.profile-card .profile-info .profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border: 2px solid #cacaca;
+  padding: 7px;
+  cursor: pointer;
+}
 .profile-card .profile-info .right-info {
   margin-top: 25px;
   margin-right: 20px;

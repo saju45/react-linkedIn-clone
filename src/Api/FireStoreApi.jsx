@@ -151,3 +151,30 @@ export const getComments=(postId,setComments)=>{
     }
 }
 
+
+export const updatePostApi=(id,status)=>{
+
+    let docToUpdate=doc(collectionRef,id)
+
+    try {
+        updateDoc(docToUpdate,{status})
+        toast.success("post has been updated")
+
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export const deletePost=(id)=>{
+
+    let docToDelete=doc(collectionRef,id)
+
+    try {
+        deleteDoc(docToDelete)
+        toast.success("Post has been deleted!")
+    } catch (error) {
+        console.error(error);
+    }
+
+}

@@ -3,9 +3,7 @@ import {  Modal } from 'antd';
 import './index.scss'
 import { Button } from 'antd';
 
-const ModalComponent = ({modalOpen,setModalOpen,setStatus,status,sendStatus}) => {
-
- 
+const ModalComponent = ({modalOpen,setModalOpen,setStatus,status,sendStatus,isEdit,updateStatus}) => {
 
   return (
     <>
@@ -14,22 +12,27 @@ const ModalComponent = ({modalOpen,setModalOpen,setStatus,status,sendStatus}) =>
         title="Create a post"
         centered
         open={modalOpen}
-        onOk={() => setModalOpen(false)}
-        onCancel={() => setModalOpen(false)}
+        onOk={() => {
+          setStatus('')
+          setModalOpen(false)
+        }}
+        onCancel={() => {
+          setStatus('')
+          setModalOpen(false)}}
 
         footer={[
         
             <Button 
-            onClick={sendStatus}
+            onClick={isEdit?updateStatus:sendStatus}
             key="submit"
             type="primary"
             disabled={status.length>0? false:true}>
-              Post
+              {isEdit?'Update': 'Post'}
             </Button>
         ]}
             >
         
-        <input className='modal-input' type="text" placeholder='What do you want to talk about' onChange={(e)=> setStatus(e.target.value)} value={status} />
+        <input className='modal-input' type="text"  placeholder='What do you want to talk about' onChange={(e)=> setStatus(e.target.value)} value={status} />
 
       </Modal>
    

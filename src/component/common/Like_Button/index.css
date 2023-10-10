@@ -1,13 +1,92 @@
 .like-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   gap: 5px;
-  padding: 5px 10px;
+  padding: 7px 10px;
   cursor: pointer;
+  margin-bottom: -20px;
+}
+.like-container .like-comment {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin-top: 5px;
+}
+.like-container .hr-line {
+  margin-top: -15px;
+}
+.like-container .hr-line hr {
+  border: 1px solid rgb(181, 181, 181);
 }
 .like-container p {
   font-family: system-ui;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.835);
-  font-size: 14px;
+  font-weight: 400;
+  color: rgba(58, 58, 58, 0.835);
+  font-size: 12px;
+  margin-left: 5px;
+}
+.like-container .likes-comment-inner {
+  display: flex;
+  align-items: center;
+  margin-top: -20px;
+}
+.like-container .likes-comment-inner p {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  color: rgba(58, 58, 58, 0.835);
+  font-size: 16px;
+  margin-left: 5px;
+}
+.like-container .likes-comment-inner .blue {
+  color: #0a66c4;
+}
+.like-container .likes-comment-inner .black {
+  color: rgba(58, 58, 58, 0.835);
+}
+.like-container .comment-input {
+  height: 40px;
+  background-color: whitesmoke;
+  padding-left: 7px;
+  border-radius: 30px;
+  border: 1px solid #4b4b4b;
+}
+.like-container .comment-input:focus {
+  outline: 1px solid #4b4b4b;
+  color: #4b4b4b;
+}
+.like-container .add-comment {
+  width: 150px;
+  height: 35px;
+  background-color: #0a66c2;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: white;
+}
+.like-container .all-comments {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(227, 227, 227);
+  border-radius: 10px;
+  position: relative;
+  margin: 7px 0;
+}
+.like-container .all-comments .name {
+  color: #212121;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.like-container .all-comments .comment {
+  margin-left: 10px;
+  margin-top: 0px;
+}
+.like-container .all-comments .timestamp {
+  position: absolute;
+  top: 0px;
+  right: 10px;
 }/*# sourceMappingURL=index.css.map */

@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 import ModalComponent from '../Modal'
 import './index.scss'
-import { AddPost ,getStatus} from '../../../Api/FireStoreApi';
+import { AddPost ,getStatus, updatePostApi} from '../../../Api/FireStoreApi';
 import PostsCard from '../PostCard';
 import { getCurrentTimeStamp } from '../../../helpers/useMoment';
 import { getUniqueId } from '../../../helpers/getUniqId';
@@ -13,6 +13,8 @@ const PostStatus = ({currentUser}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [status,setStatus]=useState('')
   const [allStatus,setAllStatus]=useState([])
+  const [isEdit,setIsEdit]=useState(false)
+  const [currentPost,setCurrentPost]=useState({})
 
   const sendStatus= async()=>{
 
@@ -27,6 +29,7 @@ const PostStatus = ({currentUser}) => {
 
 
     await AddPost(object)
+    setIsEdit(false)
     await setModalOpen(false)
     await setStatus('')
   }
@@ -34,6 +37,20 @@ const PostStatus = ({currentUser}) => {
   useMemo(()=>{
     getStatus(setAllStatus)
   },[])
+
+
+  const getEditData=(post)=>{
+    setIsEdit(true)
+    setModalOpen(true)
+    setCurrentPost(post)
+   setStatus(post?.status);
+  }
+
+  const updateStatus=()=>{
+  
+    updatePostApi(currentPost.id,status)
+    setModalOpen(false)
+  }
 
 
   return (
@@ -49,11 +66,13 @@ const PostStatus = ({currentUser}) => {
        modalOpen={modalOpen} 
        setModalOpen={setModalOpen}
        sendStatus={sendStatus}
+       isEdit={isEdit}
+       updateStatus={updateStatus}
        />
 
        <div>
     {allStatus.map((posts)=>{
-        return  <PostsCard posts={posts} key={posts.id} />
+        return  <PostsCard posts={posts} key={posts.id} getEditData={getEditData} />
 
        })}
        </div>
