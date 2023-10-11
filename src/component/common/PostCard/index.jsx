@@ -3,8 +3,8 @@
 import { useNavigate } from 'react-router-dom'
 import './index.scss'
 import LikeButton from '../Like_Button'
-import { useMemo, useState } from 'react'
-import { deletePost, getAllUsers, getCurrentUser } from '../../../Api/FireStoreApi'
+import { useEffect, useMemo, useState } from 'react'
+import { deletePost, getAllUsers, getConnection, getCurrentUser } from '../../../Api/FireStoreApi'
 import {BsPencil,BsTrash} from 'react-icons/bs';
 
 const PostsCard = ({posts,getEditData}) => {
@@ -13,6 +13,7 @@ const PostsCard = ({posts,getEditData}) => {
 
   const [allUsers,setAllUsers]=useState([])
   const [currentUser,setCurrentUser]=useState({})
+  const [isConnected,setIsConnected]=useState(false)
 
 
   useMemo(()=>{
@@ -20,12 +21,16 @@ const PostsCard = ({posts,getEditData}) => {
     getCurrentUser(setCurrentUser)
   },[])
 
+  useEffect(()=>{
+    getConnection(currentUser?.userId,posts.userId,setIsConnected)
+  },[currentUser?.userId,posts.userId])
 
-  
-  // console.log(currentUser.userIds);
-  console.log(posts.userId);
+  console.log(isConnected);
+  console.log(allUsers.filter((user)=>user.userId===posts.userId)[0]?.name);
+  // console.log(posts.userId);
 
   return (
+    isConnected?
     <div className='posts-card'>
       <div className='post-image-wrapper'>
         {currentUser.userId===posts.userId?
@@ -39,16 +44,19 @@ const PostsCard = ({posts,getEditData}) => {
        .map((item)=> item.imageLink)[0]} />
      
        <div>
-       <p className='name' onClick={()=>navigate('/profile',{state:{id:posts?.userId,email:posts.userEmail}})}>{posts.userName}</p>
-      <p className='timeStamp'>{posts.timeStamp}</p>
+       <p className='name'
+        onClick={()=>navigate('/profile',{state:{id:posts?.userId,email:posts.userEmail}})}>
+          {posts.userName}
+          </p>
+          <p className='headline'>{allUsers.filter((user)=>user.id===posts?.userId)[0]?.headline}</p>
+          <p className='timeStamp'>{posts.timeStamp}</p>
        </div>
-
 
       </div>
       
         <p className='status'>{posts.status}</p>
         <LikeButton postId={posts.postId}/>
-    </div>
+    </div>:<></>
   )
 }
 

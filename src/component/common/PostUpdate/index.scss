@@ -4,6 +4,40 @@
     align-items: center;
     flex-direction: column;
 
+    .user-details{
+        width: 550px;
+        height: auto;
+        background-color: whitesmoke;
+        margin-top: 100px;
+        border: 1px solid #b7b7b7;
+        border-radius: 7px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: -60px;
+            border: 1px solid #b7b7b7;
+            padding: 2px;
+
+        }
+
+        .name{
+            
+            font-weight: 600;
+            font-family: system-ui;
+        }
+
+        .headline{
+            font-family: system-ui;
+            margin-top: -18px;
+        }
+
+    }
     .post-status{
         width: 550px;
         height: 100px;
@@ -15,6 +49,16 @@
         justify-content: center;
         align-items: center;
 
+        .post-image{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 1px solid #b7b7b7;
+            padding: 2px;
+
+        }
         .open-post-modal{
             width: 80%;
             height: 50px;

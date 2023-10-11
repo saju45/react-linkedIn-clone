@@ -20,7 +20,8 @@ const RegisterComponent = () => {
       const object={
         name : creadential.name,
         email:creadential.email,
-        password:creadential.password
+        password:creadential.password,
+        imageLink: "https://www.coinfabrik.com/wp-content/uploads/2022/08/cf-ts.webp"
       }
 
        const res=await RegisterApi(creadential.email,creadential.password)

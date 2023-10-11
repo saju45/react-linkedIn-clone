@@ -5,8 +5,6 @@ import { AiOutlineSearch,AiOutlineHome, AiOutlineUserSwitch,AiOutlineMessage,AiO
 import { BsBriefcase } from 'react-icons/bs';
 import user from '../../../assets/user.jpg'
 import { useNavigate } from 'react-router-dom';
-import { LogoutApi } from '../../../Api/AuthApi';
-import Popup from 'reactjs-popup';
 import ProiflePopup from '../ProfilePopup';
 import { useState } from 'react';
 
@@ -40,7 +38,7 @@ const Topbar = () => {
         <div className='react-icons'>
         <AiOutlineSearch size={30} className='react-icon'/>
         <AiOutlineHome size={30} className='react-icon' onClick={()=> gotoRoutes('/home')}/>
-        <AiOutlineUserSwitch size={30} className='react-icon' onClick={()=> gotoRoutes('/profile')}/>
+        <AiOutlineUserSwitch size={30} className='react-icon' onClick={()=> gotoRoutes('/connection')}/>
         <BsBriefcase size={30} className='react-icon'/>
         <AiOutlineMessage size={30} className='react-icon'/>
         <AiOutlineBell size={30} className='react-icon'/> 

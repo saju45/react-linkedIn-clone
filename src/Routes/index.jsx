@@ -3,6 +3,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import HomeLayout from "../layout/HomeLayout";
 import ProfileLayout from "../layout/ProfileLayout";
+import ConnectionLayout from "../layout/ConnnectionLayout";
 
  export const router = createBrowserRouter([
   {
@@ -21,4 +22,9 @@ import ProfileLayout from "../layout/ProfileLayout";
       path: "/profile",
       element: <ProfileLayout/>,
     },
+    {
+      path: "/connection",
+      element: <ConnectionLayout/>,
+    },
+
   ]);

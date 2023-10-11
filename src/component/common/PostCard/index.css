@@ -30,6 +30,13 @@
   margin: 0px 0 0 0px;
   cursor: pointer;
 }
+.posts-card .headline {
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0px 0 0 0px;
+}
 .posts-card .timeStamp {
   font-family: system-ui, sans-serif;
   font-size: 12px;

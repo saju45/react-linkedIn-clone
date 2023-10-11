@@ -53,10 +53,17 @@ const PostStatus = ({currentUser}) => {
   }
 
 
+  console.log();
+
   return (
     <div className='post-status-main'>
-
+      <div className='user-details'>
+        <img  src={currentUser.imageLink} alt="" />
+        <p className='name'>{currentUser.name}</p>
+        <p className='headline'>{currentUser.headline}</p>
+      </div>
       <div className='post-status'>
+      <img className='post-image' src={currentUser.imageLink} alt="" />
         <button className='open-post-modal' onClick={() => setModalOpen(true)}>Start a post</button>
       </div>
 

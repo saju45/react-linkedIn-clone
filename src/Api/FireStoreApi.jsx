@@ -7,6 +7,7 @@ const collectionRef=collection(firestore,'posts')
 const userRef =collection(firestore,"users")
 const likeRef=collection(firestore,"likes");
 const commentRef=collection(firestore,'comments')
+const connectionRef=collection(firestore,'connections')
 
 export const AddPost=(object)=>{
 
@@ -18,7 +19,6 @@ export const AddPost=(object)=>{
         toast.error("something is wrong");
     })
 }
-
 
  export const getStatus=(setAllStatus)=>{
     
@@ -178,3 +178,34 @@ export const deletePost=(id)=>{
     }
 
 }
+
+export const addConnection=async(userId,targetId)=>{
+    
+    try {
+        let connectionToAdd=doc(connectionRef,`${userId}}_${targetId}` )
+        await setDoc(connectionToAdd,{userId,targetId})
+        toast.success("Connection Added")
+    } catch (error) {
+        console.error(error);
+    }
+
+}
+
+export const getConnection=(userId,targetId,setIsConnected)=>{
+
+    try {
+        let connectionQuary=query(connectionRef,where('targetId','==',targetId));
+        onSnapshot(connectionQuary,(response)=>{
+            let connections=response.docs.map((doc)=>{
+                return doc.data()
+            })
+         
+            const isConnected=connections.some((connection)=> connection.userId===userId)
+            setIsConnected(isConnected)
+            // console.log(isLiked);
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
