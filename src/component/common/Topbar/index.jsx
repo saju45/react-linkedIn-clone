@@ -6,23 +6,63 @@ import { BsBriefcase } from 'react-icons/bs';
 import user from '../../../assets/user.jpg'
 import { useNavigate } from 'react-router-dom';
 import ProiflePopup from '../ProfilePopup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import SeacrchUsers from '../SearchUsers';
+import { getAllUsers } from '../../../Api/FireStoreApi';
 
 
 const Topbar = () => {
 
   const [popupVisible,setPopupVisible]=useState(false)
-
+  const [isSearch,setIsSearch]=useState(false)
+  const [searchInput,setSearchInput]=useState('')
+  const [allUsers,setAllUsers]=useState([])
+  const [filteredUser,setFilteredUser]=useState([])
     const navigate=useNavigate();
-    const gotoRoutes=(route)=>{
 
+    const gotoRoutes=(route)=>{
         navigate(route)
     }
-
 
     const displayPopup = () => {
       setPopupVisible(!popupVisible);
     };
+
+
+    useEffect(()=>{
+      getAllUsers(setAllUsers)
+    },[])
+
+
+    const openUserProfile=(user)=>{
+      navigate('/profile',{state:{id:user?.userId,email:user.email}})
+    }
+
+
+    const handleSearch=()=>{
+
+      if(searchInput!==''){
+
+        let searched=allUsers.filter((user)=> {
+          return Object.values(user).join('').toLocaleLowerCase().includes(searchInput.toLocaleLowerCase())
+        })
+  
+        setFilteredUser(searched)
+      }else{
+        setFilteredUser(allUsers)
+      }
+
+   
+    }
+
+
+    useEffect(()=>{
+
+      let debounced=setTimeout(()=>{
+        handleSearch()
+        return ()=>clearTimeout(debounced)
+      },1000)
+    },[searchInput])
 
   return (
     <div className='topbar-main'>
@@ -35,8 +75,9 @@ const Topbar = () => {
       )}
 
         <img className='linkedin-logo' src={logo} alt="logo" />
+        {isSearch?<SeacrchUsers setIsSearch={setIsSearch} setSearchInput={setSearchInput}/>:
         <div className='react-icons'>
-        <AiOutlineSearch size={30} className='react-icon'/>
+        <AiOutlineSearch size={30} className='react-icon' onClick={()=>setIsSearch(true)}/>
         <AiOutlineHome size={30} className='react-icon' onClick={()=> gotoRoutes('/home')}/>
         <AiOutlineUserSwitch size={30} className='react-icon' onClick={()=> gotoRoutes('/connection')}/>
         <BsBriefcase size={30} className='react-icon'/>
@@ -50,6 +91,23 @@ const Topbar = () => {
             <img className='user-logo' src={user} alt="profile"  onClick={displayPopup}/>
 
         </div>
+        }
+
+       {searchInput.length>0?<div className="search-results">
+        {filteredUser.length==0 ?<div className='search-inner'>
+          No Result Found ...</div>:
+           filteredUser.map((user,index)=>{
+          return (
+            <div key={index} className='search-inner' onClick={()=> openUserProfile(user)}>
+              <img src={user.imageLink} alt="Profile" />
+              <p className='name'>{user.name}</p>
+              {/* <p>{user.headline}</p> */}
+            </div>
+          )
+        })}
+         </div>:<></>}
+
+       
 
     </div>
   )

@@ -12,7 +12,6 @@ const ConnectionLayout = () => {
     getCurrentUser(setCurrentUser)
   },[])
 
-  // console.log(currentUser);
 
   return (
     <div>

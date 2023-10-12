@@ -17,7 +17,6 @@ const ConnectionComponent = ({currentUser}) => {
 
 
   const getCurrentUser=(id)=>{
-    console.log(currentUser.userId);
     addConnection(currentUser?.userId,id)
   }
 
