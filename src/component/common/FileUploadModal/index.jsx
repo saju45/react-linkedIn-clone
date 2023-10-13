@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { Button, Modal,Progress, Space } from 'antd';
+import { Button, Modal,Progress } from 'antd';
 
 import './index.scss'
 

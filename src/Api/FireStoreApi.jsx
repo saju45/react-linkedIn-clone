@@ -152,12 +152,12 @@ export const getComments=(postId,setComments)=>{
 }
 
 
-export const updatePostApi=(id,status)=>{
+export const updatePostApi=(id,status,postImage)=>{
 
     let docToUpdate=doc(collectionRef,id)
 
     try {
-        updateDoc(docToUpdate,{status})
+        updateDoc(docToUpdate,{status,postImage})
         toast.success("post has been updated")
 
     } catch (error) {

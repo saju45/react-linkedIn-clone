@@ -5,6 +5,7 @@ import ModalComponent from '../Modal'
 import './index.scss'
 import { AddPost ,getStatus, updatePostApi} from '../../../Api/FireStoreApi';
 import PostsCard from '../PostCard';
+import {uploadPostImage} from '../../../Api/ImageUpload'
 import { getCurrentTimeStamp } from '../../../helpers/useMoment';
 import { getUniqueId } from '../../../helpers/getUniqId';
 
@@ -15,6 +16,8 @@ const PostStatus = ({currentUser}) => {
   const [allStatus,setAllStatus]=useState([])
   const [isEdit,setIsEdit]=useState(false)
   const [currentPost,setCurrentPost]=useState({})
+  // const [currentImage,setCurrentImage]=useState({})
+  const [postImage,setPostImage]=useState('')
 
   const sendStatus= async()=>{
 
@@ -24,7 +27,8 @@ const PostStatus = ({currentUser}) => {
       userEmail:currentUser.email,
       userName :currentUser.name,
       userId: currentUser.userId,
-      postId:getUniqueId()
+      postId:getUniqueId(),
+      postImage:postImage
     }
 
 
@@ -48,12 +52,12 @@ const PostStatus = ({currentUser}) => {
 
   const updateStatus=()=>{
   
-    updatePostApi(currentPost.id,status)
+    updatePostApi(currentPost.id,status,postImage)
     setModalOpen(false)
   }
 
 
-  console.log();
+  console.log('currentPost : ',currentPost);
 
   return (
     <div className='post-status-main'>
@@ -75,6 +79,11 @@ const PostStatus = ({currentUser}) => {
        sendStatus={sendStatus}
        isEdit={isEdit}
        updateStatus={updateStatus}
+       uploadPostImage={uploadPostImage}
+       setPostImage={setPostImage}
+       postImage={postImage}
+       setCurrentPost={setCurrentPost}
+       currentPost={currentPost}
        />
 
        <div>

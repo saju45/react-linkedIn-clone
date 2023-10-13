@@ -30,7 +30,7 @@ const PostsCard = ({posts,getEditData}) => {
   // console.log(posts.userId);
 
   return (
-    isConnected?
+    isConnected ||currentUser?.userId=== posts.userId?
     <div className='posts-card'>
       <div className='post-image-wrapper'>
         {currentUser.userId===posts.userId?
@@ -53,7 +53,7 @@ const PostsCard = ({posts,getEditData}) => {
        </div>
 
       </div>
-      
+       {posts.postImage? <img src={posts.postImage} alt='post-image'/>:<></> }     
         <p className='status'>{posts.status}</p>
         <LikeButton postId={posts.postId}/>
     </div>:<></>

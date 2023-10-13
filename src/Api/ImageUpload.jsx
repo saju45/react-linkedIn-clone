@@ -32,3 +32,30 @@ export const uploadImageApi=(file,userId,setProgress,setModalOpen,setCurrentImag
         })
     })
 }
+
+
+export const uploadPostImage=(file,setPostImage,setProgress)=>{
+    const postImageRef=ref(storage,`postImage/${file.name}`)
+    const uploadTask=uploadBytesResumable(postImageRef,file)
+
+    uploadTask.on('state_changed',(snapshot)=>{
+        const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+    
+            setProgress(progress);
+    },(error)=>{
+        console.log(error);
+    },()=>{
+        getDownloadURL(uploadTask.snapshot.ref)
+        .then((response)=>{
+
+            try {
+              setPostImage(response);
+            } catch (error) {
+                console.error(error);
+            }
+
+        })
+    })
+}
