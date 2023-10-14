@@ -8,6 +8,16 @@
     font-family: system-ui;
     resize: none;
 }
+
+.ql-container.ql-snow, .ql-toolbar.ql-snow{
+    border: none !important;
+}
+
+.ql-container.ql-snow{
+    height: 150px;
+    font-size: 20px;
+    font-family: system-ui;
+}
 .picture-icon{
     color: #0073b1;
     cursor: pointer;

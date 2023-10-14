@@ -57,8 +57,6 @@ const PostStatus = ({currentUser}) => {
   }
 
 
-  console.log('currentPost : ',currentPost);
-
   return (
     <div className='post-status-main'>
       <div className='user-details'>

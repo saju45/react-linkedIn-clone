@@ -6,6 +6,7 @@ import LikeButton from '../Like_Button'
 import { useEffect, useMemo, useState } from 'react'
 import { deletePost, getAllUsers, getConnection, getCurrentUser } from '../../../Api/FireStoreApi'
 import {BsPencil,BsTrash} from 'react-icons/bs';
+import { Modal } from 'antd'
 
 const PostsCard = ({posts,getEditData}) => {
 
@@ -13,6 +14,7 @@ const PostsCard = ({posts,getEditData}) => {
 
   const [allUsers,setAllUsers]=useState([])
   const [currentUser,setCurrentUser]=useState({})
+  const [imageModal,setImageModal]=useState(false)
   const [isConnected,setIsConnected]=useState(false)
 
 
@@ -40,7 +42,7 @@ const PostsCard = ({posts,getEditData}) => {
         </div>:<></>
       }
       
-      <img className='post-image' alt='profile image' src={allUsers.filter((item)=> item.id===posts.userId)
+      <img  className='profile-image' alt='profile image' src={allUsers.filter((item)=> item.id===posts.userId)
        .map((item)=> item.imageLink)[0]} />
      
        <div>
@@ -53,9 +55,21 @@ const PostsCard = ({posts,getEditData}) => {
        </div>
 
       </div>
-       {posts.postImage? <img src={posts.postImage} alt='post-image'/>:<></> }     
-        <p className='status'>{posts.status}</p>
+       {posts.postImage? <img className='post-image' src={posts.postImage} alt='post-image' onClick={()=>setImageModal(true)}/>:<></> }     
+        <div className='status' dangerouslySetInnerHTML={{__html:posts.status}}></div>
         <LikeButton postId={posts.postId}/>
+
+        <Modal
+        centered
+        open={imageModal}
+        onOk={() => setImageModal(false)}
+        onCancel={() => setImageModal(false)}
+        footer={[]}
+      >
+               {posts.postImage? <img className='post-image modal' src={posts.postImage} alt='post-image' onClick={()=>setImageModal(true)}/>:<></> }     
+      </Modal>
+
+
     </div>:<></>
   )
 }

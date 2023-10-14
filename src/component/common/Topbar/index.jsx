@@ -11,7 +11,7 @@ import SeacrchUsers from '../SearchUsers';
 import { getAllUsers } from '../../../Api/FireStoreApi';
 
 
-const Topbar = () => {
+const Topbar = ({currentUser}) => {
 
   const [popupVisible,setPopupVisible]=useState(false)
   const [isSearch,setIsSearch]=useState(false)
@@ -63,7 +63,7 @@ const Topbar = () => {
         return ()=>clearTimeout(debounced)
       },1000)
     },[searchInput])
-
+    console.log();
   return (
     <div className='topbar-main'>
       {popupVisible ? (
@@ -83,12 +83,8 @@ const Topbar = () => {
         <BsBriefcase size={30} className='react-icon'/>
         <AiOutlineMessage size={30} className='react-icon'/>
         <AiOutlineBell size={30} className='react-icon'/> 
-        {/* <Popup trigger=
-                {<img className='user-logo' src={user} alt="profile" />}
-                position="bottom right center">
-                  <ProiflePopup/>
-            </Popup> */}
-            <img className='user-logo' src={user} alt="profile"  onClick={displayPopup}/>
+      
+        <img className='user-logo' src={currentUser?.imageLink} alt="profile"  onClick={displayPopup}/>
 
         </div>
         }

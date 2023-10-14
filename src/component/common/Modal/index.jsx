@@ -3,6 +3,7 @@ import {  Modal,Progress } from 'antd';
 import './index.scss'
 import { Button } from 'antd';
 import { AiOutlinePicture } from 'react-icons/ai';
+import ReactQuill from 'react-quill';
 import { useState } from 'react';
 
 const ModalComponent = ({modalOpen,setModalOpen,setStatus,status,sendStatus,isEdit,updateStatus,uploadPostImage,setPostImage,postImage,setCurrentPost,currentPost}) => {
@@ -41,7 +42,9 @@ const ModalComponent = ({modalOpen,setModalOpen,setStatus,status,sendStatus,isEd
             >
         
         <div className='posts-body'>
-        <textarea rows={3} cols={3} className='modal-input' type="text"  placeholder='What do you want to talk about' onChange={(e)=> setStatus(e.target.value)} value={status} />
+        {/* <textarea rows={3} cols={3} className='modal-input' type="text"  placeholder='What do you want to talk about' onChange={(e)=> setStatus(e.target.value)} value={status} /> */}
+        <ReactQuill placeholder='Share something useful...' theme="snow" className='modal-input' value={status} onChange={setStatus} />
+      
         <div className='progress-bar'>
         {progress===0 || progress===100 ?<></>:<Progress type="circle" percent={progress} />}
     </div>
